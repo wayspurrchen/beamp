@@ -4,10 +4,12 @@ Simple Node.js script that converts your data into a .bmp image by taking the da
 
 ## Using it
 
-Want to use it? You can clone the repo then run:
+Want to use it? You'll need [Node.js](nodejs.org/) and at least version 0.12. Once you have it, you can clone the repo then run:
 
 ```
-node path/to/repo/index.js --file input.dat --out out.bmp
+cd path/to/repo
+npm install
+node ./index.js --file input.dat --out out.bmp
 ```
 
 Options:
@@ -16,6 +18,6 @@ param        | function
 ------------ | ----------
 `f`, `file`  | input file path
 `o`, `out`   | output path
-`w`, `width` | width - height is determined automatically based on width and file size
+`w`, `width` | width - height is determined automatically based on width and file size, defaults to 100
 
 Global install options coming soon.
