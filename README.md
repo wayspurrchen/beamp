@@ -12,10 +12,10 @@ node path/to/repo/index.js --file input.dat --out out.bmp
 
 Options:
 
-param|function
---|--
-`f`, `file`|input file path
-`o`, `out`|output path
-`w`, `width`|width - height is determined automatically based on width and file size
+param        | function
+------------ | ----------
+`f`, `file`  | input file path
+`o`, `out`   | output path
+`w`, `width` | width - height is determined automatically based on width and file size
 
 Global install options coming soon.
