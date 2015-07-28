@@ -37,7 +37,6 @@ function roundToMultiple ( num, multiple ) {
 	}
 }
 
-var replaces = argv.t || argv.times || 50;
 var outPath = argv.o || argv.out || 'out.bmp';
 var filePath = argv.f || argv.file;
 
@@ -48,7 +47,7 @@ console.log( 'byteCount', byteCount );
 var bpp = 24;
 
 // var usePadding = false;
-var width = argv.w || argv.width || 10;
+var width = argv.w || argv.width || 100;
 var remainder = byteCount % width;
 
 var bytesPerRow = width * 3;
@@ -99,10 +98,10 @@ bitmap.writeUIntLE(0x28, 14, 4);
 // DIMENSIONS
 
 // Bitmap width in pixels - signed int
-bitmap.writeUIntLE( decToHexZerosRight( width, 8 ), 18, 4);
+bitmap.writeUIntLE( '0x' + width.toString( 16 ), 18, 4);
 
 // Bitmap height in pixels - signed int
-bitmap.writeUIntLE( decToHexZerosRight( height, 8 ), 22, 4);
+bitmap.writeUIntLE( '0x' + height.toString( 16 ), 22, 4);
 
 // PIXEL DATA
 // Number of color planes (must be 1)
@@ -121,17 +120,17 @@ bitmap.writeUIntLE(0x00, 34, 4);
 
 // Horizontal resolution of the image (pixel per meter, signed int)
 // Stole this from another same size image - seems to be 0x130B or dec 77835?
-bitmap.writeUIntLE(0x130B0000, 38, 4);
+bitmap.writeUIntLE(0x130B, 38, 4);
 
 // Vertical resolution of the image (pixel per meter, signed int)
 // Stole this from another same size image - seems to be 0x130B or dec 77835?
-bitmap.writeUIntLE(0x130B0000, 42, 4);
+bitmap.writeUIntLE(0x130B, 42, 4);
 
 // Number of colors in the color palette, 0 to default to 2^n (n of what?)
-bitmap.writeUIntLE(0x00000000, 46, 4);
+bitmap.writeUIntLE(0x00, 46, 4);
 
 // Number of important colors used, 0 when every color is important, generally ignored
-bitmap.writeUIntLE(0x00000000, 50, 4);
+bitmap.writeUIntLE(0x00, 50, 4);
 
 // A color table would come here that is mandatory for color depths <= 8 bits,
 // but we're using 24 bit so it doesn't matter.
@@ -153,13 +152,7 @@ while ( iterations < height ) {
 	iterations++;
 
 	if ( iterations % 15 == 0 ) {
-		console.log( 'offset, currentByte', offset, currentByte );
-	}
-
-	// If this is the last iteration, we need to fill the rest of the row with
-	// blank pixels if we have run out
-	if ( iterations === height ) {
-
+		// console.log( 'offset, currentByte', offset, currentByte );
 	}
 }
 
