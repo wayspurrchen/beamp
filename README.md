@@ -47,3 +47,15 @@ node ./index.js --file EVE_Online_Installer_852809.exe --out eve.bmp -w 1200
 ```
 
 ![](http://i.imgur.com/Ha3bvmb.jpg)
+
+### 657kb PNG
+
+You get the idea for the command. Here's what a random image PNG looks like:
+
+![](http://i.imgur.com/dkfNDoK.png)
+
+### 10.6 MB mpeg file
+
+Loaded a large MPEG. Needed to downsize it a bit so it would fit on imgur.
+
+![](http://i.imgur.com/a8FnIUV.jpg)
