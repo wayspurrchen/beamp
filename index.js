@@ -37,8 +37,8 @@ function roundToMultiple ( num, multiple ) {
 	}
 }
 
-var outPath = argv.o || argv.out || 'out.bmp';
-var filePath = argv.f || argv.file;
+var outPath = argv.o || argv.out || argv._[ 1 ] || 'out.bmp';
+var filePath = argv.f || argv.file || argv._[ 0 ];
 
 var fileBuffer = fs.readFileSync( filePath );
 var byteCount = fileBuffer.length;
@@ -150,17 +150,12 @@ while ( iterations < height ) {
 	fileBuffer.copy( bitmap, offset, currentByte, currentByte + bytesPerRow );
 	currentByte += bytesPerRow;
 	iterations++;
-
-	if ( iterations % 15 == 0 ) {
-		// console.log( 'offset, currentByte', offset, currentByte );
-	}
 }
-
-// // Fill in the last row with padding
-// for ( var k = 0; k < remainder; k++ ) {
-// 	bitmap[ 56 + byteCount + k ] = 0;
-// }
 
 console.log( bitmap );
 
-fs.writeFileSync( path.resolve( process.cwd(), outPath ), bitmap );
+var out = path.resolve( process.cwd(), outPath );
+
+fs.writeFileSync( out, bitmap );
+
+console.log( 'Ding! beamp\'d: ' + out );
