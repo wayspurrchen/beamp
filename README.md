@@ -4,7 +4,7 @@ Simple Node.js script that converts your data into a .bmp image by taking the da
 
 ## Using it
 
-Want to use it? You'll need [Node.js](nodejs.org/) and at least version 0.12. Once you have it, you can clone the repo then run:
+Want to use it? You'll need [Node.js](https://nodejs.org/) and at least version 0.12. Once you have it, you can clone the repo then run:
 
 ```
 cd path/to/repo
